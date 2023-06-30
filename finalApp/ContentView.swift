@@ -8,33 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Binding var email: String
     var body: some View {
         
-        
-        NavigationStack {
-            Image("world")
-                .resizable(resizingMode: .stretch)
+        ZStack{
+            Image("marble!")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            NavigationStack {
                 
-              
-            
-        NavigationLink(destination: homeView(email: $email)) {
-            Text("Welcome")
-            }
-           .buttonStyle(.bordered)
-
-               }
-                .font(.largeTitle)
-        
-        
-            
+                
+                VStack {
+                    Image("world")
+                        .resizable(resizingMode: .stretch)
+                        .aspectRatio(contentMode: .fit)
+                        .padding(-7.0)
+                    
+                    
+                    NavigationLink(destination: homeView()){
+                        Text("Welcome")
+                    }
+                    .buttonStyle(.bordered)
+                    
+                }
+                .padding()
+                
+                
+            } //closes navigation stack
         }
-        
+       
+            
+         //closes VStack
+      
+    }
+
+}
         
         struct ContentView_Previews: PreviewProvider {
             static var previews: some View {
-                ContentView(email: #Binding)
+                ContentView()
             }
         }
-    }
+    
 
